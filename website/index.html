@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio's weather journal app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Weather Journal App</h1>
+        <div class="main">
+            <div class="content-1">
+                <div>
+                    <label for="zip">Enter zipcode here</label>
+                    <input type="text" >
+                </div>
+                <div>
+                    <label for="feelings">How are you feeling today?</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label for="entry">What's on your mind?</label>
+                    <textarea id="journal-entry" cols="30" rows="10"></textarea>
+                    <button type="submit"> Done </button>
+                </div>
+            </div>
+            <div class="content-2">
+                <div class="icon">
+                    icon here
+                </div>
+                <div id="date-temp">
+                    11/07/2021 &nbsp;&nbsp; 35℃ | 40℉
+                </div>
+                <div class="description">
+                    It's sunny!
+                </div>
+                <div class="emotion">
+                    Your happy today!
+                </div>
+                <div class="journal-entries">
+                    <h3>Recent entries:</h3>
+                    <div class="current-entries">
+                        <div class="log-date">
+                            11/07/2021
+                        </div>
+                        <div class="log-entry">
+                            I recently bought a new book in the bookstore cause it was on sale.
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <footer>
+            Copyright &copy; 2021 - <a href="https://musing-ptolemy-95f7d2.netlify.app/index.html" target="_blank">Rio Cantre</a>
+        </footer>   
+    </div>
+
+    <script src="app.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Montserrat+Alternates:wght@300;600&display=swap');
+
+* {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+html { 
+    background: url(/website/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 900px;
+
+}
+
+h1 {
+    font-family: 'Barrio', cursive;
+    text-align: center;
+    font-size: 54px;
+    color: #3D3932;
+    margin-top: 5rem;
+}
+.main {
+    display: flex;
+    justify-content: center;
+}
+.content-1,
+.content-2 {
+    padding: 30px;
+    background: hsla(0, 0%, 100%, 0.43);
+    margin: 10px;
+    border-radius: 20px;
+    text-align: center;
+}
+label {
+    font-size: 20px;
+}
+input,
+textarea {
+    width: 400px;
+    display: block;
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #756A5F;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+button {
+    padding: 15px;
+    border-radius: 30px;
+    width: 150px;
+    font-size: 15px;
+    background-color: #657274;
+    border: 1px solid #657274;
+}
+button:hover {
+    cursor: pointer;
+    color: #F8F8F8;
+    background-color: #79645C;
+}
+.icon,
+.date-temp,
+.description {
+    padding: 10px;
+}
+.current-entries {
+    padding: 20px 40px;
+    background-color: #CBBFBA;
+    border-radius: 20px;
+    display: flex;
+    font-size: 13px;
+    margin: 10px;
+}
+.log-date,
+.log-entry {
+    margin: 10px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    color: #F8F8F8;
+    padding: 10px;
+}
+footer a {
+    text-decoration: none;
+    color: #F8F8F8;
+}
+footer a:hover {
+    color: #657274;
+}
+
