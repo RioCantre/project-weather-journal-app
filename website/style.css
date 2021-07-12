@@ -4,7 +4,7 @@
     font-family: 'Montserrat Alternates', sans-serif;
 }
 html { 
-    background: url(/website/bg.jpg) no-repeat center center fixed; 
+    background: url(/bg.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
