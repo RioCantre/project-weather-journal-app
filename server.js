@@ -6,8 +6,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const app = express();
 // Start up an instance of app
+const app = express();
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -28,34 +28,19 @@ app.listen(port, () => {
 })
 
 // Create a GET route
-app.get('/get', (req, res) => {
+app.get('/all', getData);
+
+function getData(req, res) {
     res.send(projectData);
     console.log(projectData);
-})
-
-app.get('/all', (req, res) => {
-    res.send(projectData);
-    console.log(projectData)
-})
+}
 
 
 // Create a POST route
-app.post('/add', (req, res) => {
-    newEntry = {
-        location: req.body.location,
-        dt: req.body.dt,
-        temp: req.body.temp,
-        icon: req.body.icon,
-        description: req.body.description,
-        max: req.body.max,
-        min: req.body.min,
-        feelings: req.body.feelings
-    }
-
-    projectData = newEntry;
-    console.log(projectData);
-    res.send(projectData);
-
+app.post('/addEntry', (req, res) => {
+    const entry = req.body;
+    projectData.push(entry);
+    res.json(projectData);
 })
 
 

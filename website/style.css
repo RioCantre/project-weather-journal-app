@@ -4,7 +4,7 @@
     font-family: 'Montserrat Alternates', sans-serif;
 }
 html { 
-    background: url(/bg.jpg) no-repeat center center fixed; 
+    background: url(bg.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -67,9 +67,12 @@ button:hover {
     color: #F8F8F8;
     background-color: #79645C;
 }
-.icon,
-.date-temp,
-.description {
+#location {
+    font-size: 30px;
+}
+#icon,
+#date-temp,
+#description {
     padding: 10px;
 }
 .current-entries {
@@ -80,8 +83,8 @@ button:hover {
     font-size: 13px;
     margin: 10px;
 }
-.log-date,
-.log-entry {
+#log-date,
+#log-entry {
     margin: 10px;
 }
 

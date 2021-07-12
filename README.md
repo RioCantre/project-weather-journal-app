@@ -24,6 +24,6 @@ This project requires to create an asynchronous web app that uses Web API and us
 
 
 ## License
-Content of this repository is intended only for [ Udacity](https://www.udacity.com)'s Weather Journal App project. All content is Copyright @ 2021 - Rio Cantre.
+Content of this repository is intended only for [Udacity](https://www.udacity.com)'s Weather Journal App project. All content is Copyright @ 2021 - Rio Cantre.
 
  

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rio's weather journal app</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,39 +14,42 @@
         <div class="main">
             <div class="content-1">
                 <div>
-                    <label for="zip">Enter zipcode here</label>
-                    <input type="text" >
+                    <label for="zip" id="city">Enter city here</label>
+                    <input type="text"  placeholder="type city name here..">
                 </div>
                 <div>
-                    <label for="feelings">How are you feeling today?</label>
-                    <input type="text">
+                    <label for="emotion" id="emotion">How are you feeling today?</label>
+                    <input type="text" placeholder="type feelings here... e.g happy, sad..">
                 </div>
                 <div>
                     <label for="entry">What's on your mind?</label>
-                    <textarea id="journal-entry" cols="30" rows="10"></textarea>
-                    <button type="submit"> Done </button>
+                    <textarea id="feelings" cols="30" rows="10"></textarea>
+                    <button type="submit" id="generate"> Done </button>
                 </div>
             </div>
             <div class="content-2">
-                <div class="icon">
+                <div id="location">
+                    New York
+                </div>
+                <div id="icon">
                     icon here
                 </div>
                 <div id="date-temp">
-                    11/07/2021 &nbsp;&nbsp; 35℃ | 40℉
+                   <span id="date">July 12, 2021</span> &nbsp;&nbsp; <span id="celTemp">20℃</span> |<span id="fahTemp">40℉</span>
                 </div>
-                <div class="description">
+                <div id="description">
                     It's sunny!
                 </div>
-                <div class="emotion">
+                <div id="emotion">
                     Your happy today!
                 </div>
-                <div class="journal-entries">
+                <div id="journal-entries">
                     <h3>Recent entries:</h3>
                     <div class="current-entries">
-                        <div class="log-date">
+                        <div id="log-date">
                             11/07/2021
                         </div>
-                        <div class="log-entry">
+                        <div id="log-entry">
                             I recently bought a new book in the bookstore cause it was on sale.
                         </div>
                     </div>
