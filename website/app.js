@@ -1,6 +1,6 @@
 // Global variables
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
-const apiKey = '3312911a0b7ca102a3fa47c9257e12fa';
+const apiKey = '&APPID=bdcb79216f4d1d2144e53892f4e49b12';
 
 
 let showDateFormat = () => {
@@ -31,3 +31,86 @@ let showDateFormat = () => {
 }
     
 document.getElementById('generate').addEventListener('click', generateEntry);
+
+function generateEntry(event) {
+    event.preventDefault();
+    let city = document.getElementById('city').value;
+    let emotion = document.getElementById('emotion').value;
+    let feelings = document.getElementById('feelings').value;
+
+    getWeather(baseURL, city, apiKey)
+        .then((data) => {
+            console.log(data);
+            postData('/addEntry', {
+                data: data,
+                mood: emotion,
+                entry: feelings
+
+            });
+            updateUI();
+                
+        });
+}
+
+const getWeather = async (baseURL, city, apiKey) => {
+    const res = await fetch(baseURL+city+apiKey);
+    const data = await res.json();
+    try {
+        console.log(data)
+        return {
+            city: data.name,
+            dt: showDateFormat(),
+            icon: data.weather[0].icon,
+            celTemp: Math.round(data.main.temp),
+            fahTemp: Math.round((data.main.temp * 9) / 5 + 32),
+            description: data.weather[0].description,
+            mood: emotion,
+            feelings: feelings
+        };
+    } catch (error) {
+        console.log('error', error);
+    }
+}
+
+const postData = async(url = '', data = {}) => {
+    console.log(data);
+    const res = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    try {
+        const getData = await res.json();
+        console.log(getData);
+        return newData
+    } catch (error) {
+        console.log('error', error);
+    }
+
+}
+
+const updateUI = async () => {
+    const req = await fetch('/all');
+    try {
+        const allData = await req.json();
+        console.log(allData);
+        let logDate = new Date();
+        document.getElementById('location').innerHTML = allData.city;
+        document.getElementById('icon').innerHTML = allData.icon;
+        document.getElementById('date').innerHTML = allData.dt;
+        document.getElementById('celTemp').innerHTML = allData.celTemp;
+        document.getElementById('fahTemp').innerHTML = allData.fahTemp;
+        document.getElementById('description').innerHTML = allData.description;
+        document.getElementById('current-emotion').innerHTML = allData.emotion;
+        document.getElementById('log-date').innerHTML = `${logDate.getMonth()}/${logDate.getDate()}/${logDate.getFullYear()}`;
+        document.getElementById('log-entry').innerHTML = allData.feelings;
+
+    } catch (error) {
+        console.log('error', error);
+    }
+
+}
+
