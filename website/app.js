@@ -95,15 +95,14 @@ const updateUI = async () => {
     try {
         const allData = await req.json();
         console.log(allData);
-        let logDate = new Date();
-        document.getElementById('location').innerHTML = allData.city;
-        document.getElementById('icon').innerHTML = allData.icon;
-        document.getElementById('date').innerHTML = allData.dt;
-        document.getElementById('temp').innerHTML = allData.temp;
-        document.getElementById('description').innerHTML = allData.description;
-        document.getElementById('current-emotion').innerHTML = allData.emotion;
-        document.getElementById('log-date').innerHTML = `${logDate.getMonth()}/${logDate.getDate()}/${logDate.getFullYear()}`;
-        document.getElementById('log-entry').innerHTML = allData.feelings;
+
+        document.getElementById('location').textContent = `${allData.data.city}`;
+        document.getElementById('icon').innerHTML = `<img src="https://openweathermap.org/img/wn/${allData.data.icon}@2x.png">`;
+        document.getElementById('date').textContent = `${allData.data.dt}`;
+        document.getElementById('temp').textContent = `${allData.data.temp}℃`;
+        document.getElementById('description').textContent = `It's ${allData.data.description}!`;
+        document.getElementById('current-emotion').innerHTML = `Your ${mood} today!`;
+        document.getElementById('log-entry').innerHTML = `${entry}`;
 
     } catch (error) {
         console.log('error', error);
