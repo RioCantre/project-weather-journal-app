@@ -61,8 +61,7 @@ const getWeather = async (baseURL, city, apiKey) => {
             city: data.name,
             dt: showDateFormat(),
             icon: data.weather[0].icon,
-            celTemp: Math.round(data.main.temp),
-            fahTemp: Math.round((data.main.temp * 9) / 5 + 32),
+            temp: Math.floor(data.main.temp - 273.15),
             description: data.weather[0].description,
             mood: emotion,
             feelings: feelings
@@ -84,8 +83,7 @@ const postData = async(url = '', data = {}) => {
     })
     try {
         const getData = await res.json();
-        console.log(getData);
-        return newData
+        return getData;
     } catch (error) {
         console.log('error', error);
     }
@@ -101,8 +99,7 @@ const updateUI = async () => {
         document.getElementById('location').innerHTML = allData.city;
         document.getElementById('icon').innerHTML = allData.icon;
         document.getElementById('date').innerHTML = allData.dt;
-        document.getElementById('celTemp').innerHTML = allData.celTemp;
-        document.getElementById('fahTemp').innerHTML = allData.fahTemp;
+        document.getElementById('temp').innerHTML = allData.temp;
         document.getElementById('description').innerHTML = allData.description;
         document.getElementById('current-emotion').innerHTML = allData.emotion;
         document.getElementById('log-date').innerHTML = `${logDate.getMonth()}/${logDate.getDate()}/${logDate.getFullYear()}`;
@@ -113,4 +110,3 @@ const updateUI = async () => {
     }
 
 }
-
