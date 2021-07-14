@@ -42,7 +42,7 @@ app.post('/addEntry', (req, res) => {
     }
     projectData = entry
     res.send(projectData)
-});
+})
 
 
 

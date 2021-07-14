@@ -47,6 +47,7 @@ function generateEntry(event) {
                 entry: feelings
 
             });
+            defaultDisplay();
             updateUI();
                 
         });
@@ -63,8 +64,8 @@ const getWeather = async (baseURL, city, apiKey) => {
             icon: data.weather[0].icon,
             temp: Math.floor(data.main.temp - 273.15),
             description: data.weather[0].description,
-            mood: emotion,
-            feelings: feelings
+            mood: document.getElementById('emotion').value,
+            entry: document.getElementById('feelings').value
         };
     } catch (error) {
         console.log('error', error);
@@ -89,6 +90,24 @@ const postData = async(url = '', data = {}) => {
     }
 
 }
+const defaultDisplay = async () => {
+    const req = await fetch('/all');
+    try {
+        const allData = await req.json();
+
+        document.getElementById('location').textContent = `${allData.data.city}`;
+        document.getElementById('icon').innerHTML = `<img src="https://openweathermap.org/img/wn/${allData.data.icon}@2x.png">`;
+        document.getElementById('date').textContent = `${allData.data.dt}`;
+        document.getElementById('temp').textContent = `${allData.data.temp}℃`;
+        document.getElementById('description').textContent = `It's ${allData.data.description}!`;
+        document.getElementById('log-entry').textContent = `Today was such a great day!`;
+
+    }catch (error) {
+        console.log('error', error);
+    }
+}
+
+defaultDisplay();
 
 const updateUI = async () => {
     const req = await fetch('/all');
@@ -101,8 +120,8 @@ const updateUI = async () => {
         document.getElementById('date').textContent = `${allData.data.dt}`;
         document.getElementById('temp').textContent = `${allData.data.temp}℃`;
         document.getElementById('description').textContent = `It's ${allData.data.description}!`;
-        document.getElementById('current-emotion').innerHTML = `Your ${mood} today!`;
-        document.getElementById('log-entry').innerHTML = `${entry}`;
+        document.getElementById('current-emotion').textContent = `Your ${allData.data.mood} today!`;
+        document.getElementById('log-entry').textContent = `${allData.data.entry}`;
 
     } catch (error) {
         console.log('error', error);
