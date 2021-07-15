@@ -2,6 +2,7 @@
     base ="/"
     publish = "website/"
     command = "node server.js"
+    functions = "website/app.js"
 [[redirects]]
     from = "/*"
     to = "/index.html"
