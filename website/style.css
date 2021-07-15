@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Barrio&family=Montserrat+Alternates:wght@300;600&display=swap');
 
+/* main styles */
 * {
     font-family: 'Montserrat Alternates', sans-serif;
 }
@@ -14,12 +15,10 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .container {
     width: 900px;
 
 }
-
 h1 {
     font-family: 'Barrio', cursive;
     text-align: center;
@@ -89,6 +88,7 @@ button:hover {
     max-width: 400px;
 }
 
+/* footer style */
 footer {
     display: flex;
     justify-content: center;
@@ -102,5 +102,45 @@ footer a {
 }
 footer a:hover {
     color: #657274;
+}
+
+/* media query */
+
+@media only screen and (max-width: 750px) {
+    .container {
+        width: 400px;
+    }
+    .main {
+        display: block;
+    }
+}
+
+@media only screen and (max-width:560px) {
+    h1 {
+        font-size: 44px;
+    }
+}
+
+@media only screen and (max-width:492px){
+    h1 {
+        font-size: 36px;
+    }
+    input,
+    textarea {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 398px) {
+    h1 {
+        font-size: 30px;
+    }
+    label {
+        font-size: 18px;
+    }
+    input,
+    textarea {
+        width: 200px;
+    }
 }
 

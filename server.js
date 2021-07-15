@@ -21,6 +21,7 @@ app.use(express.static('website'));
 
 projectData = {};
 
+
 // Create a GET route
 app.get('/get', (req, res) => {
     res.send(projectData);
