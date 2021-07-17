@@ -110,7 +110,7 @@ const defaultDisplay = async () => {
     }
 }
 
-defaultDisplay(city);
+defaultDisplay();
 
 // Function to update the UI with the all requested data of the project
 const updateUI = async () => {
