@@ -4,6 +4,7 @@
 * {
     font-family: 'Montserrat Alternates', sans-serif;
 }
+
 html { 
     background: url(bg.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -38,6 +39,8 @@ h1 {
     border-radius: 20px;
     text-align: center;
 }
+
+/* first column style */
 label {
     font-size: 20px;
 }
@@ -66,6 +69,8 @@ button:hover {
     color: #F8F8F8;
     background-color: #79645C;
 }
+
+/* second column style */
 #location {
     font-size: 30px;
 }
@@ -105,7 +110,6 @@ footer a:hover {
 }
 
 /* media query */
-
 @media only screen and (max-width: 750px) {
     .container {
         width: 400px;
