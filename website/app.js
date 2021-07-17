@@ -1,6 +1,7 @@
 // Global variables
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
-const apiKey = '&APPID=bdcb79216f4d1d2144e53892f4e49b12';
+const apiKey = '&APPID=bdcb79216f4d1d2144e53892f4e49b12&units=metric';
+
 
 // Date format
 let showDateFormat = () => {
@@ -40,18 +41,23 @@ function generateEntry(event) {
     let emotion = document.getElementById('emotion').value;
     let feelings = document.getElementById('feelings').value;
 
-    getWeather(baseURL, city, apiKey)
-        .then((data) => {
-            postData('/addEntry', {
-                data: data,
-                mood: emotion,
-                entry: feelings
-
+    if (city === '' || emotion === '' || feelings === '') {
+        alert('You left it all blank...');
+        return false;
+    } else {
+        getWeather(baseURL, city, apiKey)
+            .then((data) => {
+                postData('/addEntry', {
+                    data: data,
+                    mood: emotion,
+                    entry: feelings,
+    
+                });
+                updateUI();
             });
-            defaultDisplay();
-            updateUI();
-                
-        });
+            
+        }
+        
 }
 
 // Function to GET Web API Data
@@ -63,7 +69,8 @@ const getWeather = async (baseURL, city, apiKey) => {
             city: data.name,
             dt: showDateFormat(),
             icon: data.weather[0].icon,
-            temp: Math.floor(data.main.temp - 273.15),
+            temp: Math.round(data.main.temp),
+            fahTemp: Math.round((data.main.temp * 9)/5 + 32),
             description: data.weather[0].description,
             mood: document.getElementById('emotion').value,
             entry: document.getElementById('feelings').value
@@ -92,25 +99,6 @@ const postData = async(url = '', data = {}) => {
 
 }
 
-// Function to display default setting
-const defaultDisplay = async () => {
-    const req = await fetch('/all');
-    try {
-        const allData = await req.json();
-
-        document.getElementById('location').textContent = `${allData.data.city}`;
-        document.getElementById('icon').innerHTML = `<img src="https://openweathermap.org/img/wn/${allData.data.icon}@2x.png">`;
-        document.getElementById('date').textContent = `${allData.data.dt}`;
-        document.getElementById('temp').textContent = `${allData.data.temp}℃`;
-        document.getElementById('description').textContent = `It's ${allData.data.description}!`;
-        document.getElementById('log-entry').textContent = `Today was such a great day!`;
-
-    }catch (error) {
-        console.log('error', error);
-    }
-}
-
-defaultDisplay();
 
 // Function to update the UI with the all requested data of the project
 const updateUI = async () => {
@@ -123,6 +111,7 @@ const updateUI = async () => {
         document.getElementById('icon').innerHTML = `<img src="https://openweathermap.org/img/wn/${allData.data.icon}@2x.png">`;
         document.getElementById('date').textContent = `${allData.data.dt}`;
         document.getElementById('temp').textContent = `${allData.data.temp}℃`;
+        document.getElementById('fah-temp').textContent = ` | ${allData.data.fahTemp}℉`;
         document.getElementById('description').textContent = `It's ${allData.data.description}!`;
         document.getElementById('current-emotion').textContent = `Your ${allData.data.mood} today!`;
         document.getElementById('log-entry').textContent = `${allData.data.entry}`;
@@ -130,6 +119,5 @@ const updateUI = async () => {
     } catch (error) {
         console.log('error', error);
     }
-
+    
 }
-

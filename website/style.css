@@ -83,14 +83,15 @@ button:hover {
     padding: 20px 40px;
     background-color: #CBBFBA;
     border-radius: 20px;
-    display: flex;
     font-size: 13px;
     margin: 10px;
+
 }
 
 #log-entry {
     margin: 10px;
     max-width: 400px;
+    text-align: center;
 }
 
 /* footer style */
