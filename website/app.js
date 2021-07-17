@@ -54,10 +54,10 @@ function generateEntry(event) {
     
                 });
                 updateUI();
+                resetValues();
             });
             
-        }
-        
+    }
 }
 
 // Function to GET Web API Data
@@ -121,3 +121,13 @@ const updateUI = async () => {
     }
     
 }
+
+
+function resetValues(){
+    document.getElementById('city').value = '';
+    document.getElementById('emotion').value = '';
+    document.getElementById('feelings').value = '';
+
+}
+
+
